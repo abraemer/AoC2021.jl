@@ -3,6 +3,9 @@ uuid = "971d3a0b-7624-49c5-b617-6b89b50a442c"
 authors = ["Adrian Braemer <11058200+abraemer@users.noreply.github.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+
 [compat]
 julia = "1.6.2"
 
