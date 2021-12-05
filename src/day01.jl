@@ -6,9 +6,8 @@ function readInput(inputfile="inputs/input01.txt")
     return lines
 end
 
-function day01(inputfile="inputs/input01.txt")
-    values = readInput(inputfile)
-    return (day01Part1(values), day01Part2(values))
+function day01(inputdata = readInput("inputs/input01.txt"))
+    return (day01Part1(inputdata), day01Part2(inputdata))
 end
 
 function day01Part1(values)

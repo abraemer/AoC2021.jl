@@ -25,9 +25,8 @@ function readInput(inputfile="inputs/input03.txt")
     return vcat((parseLine(line)' for line in eachline(inputfile))...)
 end
 
-function day03(inputfile="inputs/input03.txt")
-    values = readInput(inputfile)
-    return (day03Part1(values), day03Part2(values))
+function day03(inputdata = readInput("inputs/input03.txt"))
+    return (day03Part1(inputdata), day03Part2(inputdata))
 end
 
 function day03Part1(values)

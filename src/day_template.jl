@@ -8,12 +8,11 @@ end
 function readInput(inputfile="inputs/inputNNN.txt")
     lines = readlines(inputfile)
     return lines
-    # [parseLine(line) for line in eachline(inputfile)]
+    # return [parseLine(line) for line in eachline(inputfile)]
 end
 
-function dayNNN(inputfile="inputs/inputNNN.txt")
-    values = readInput(inputfile)
-    return (dayNNNPart1(values), dayNNNPart2(values))
+function dayNNN(inputdata = readInput("inputs/inputNNN.txt"))
+    return (dayNNNPart1(inputdata), dayNNNPart2(inputdata))
 end
 
 function dayNNNPart1(values)

@@ -19,8 +19,8 @@ function readInput(inputfile="inputs/input04.txt")
     return numbers_drawn, boards
 end
 
-function day04(inputfile="inputs/input04.txt")
-    numbers_drawn, boards = readInput(inputfile)
+function day04(inputdata = readInput("inputs/input04.txt"))
+    numbers_drawn, boards = inputdata
     scores = play_board.(Ref(numbers_drawn), boards)
 
     part1 = argmin(first, scores)

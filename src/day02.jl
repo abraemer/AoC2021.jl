@@ -10,9 +10,8 @@ function readInput(inputfile="inputs/input02.txt")
     return parseLine.(eachline(inputfile))
 end
 
-function day02(inputfile="inputs/input02.txt")
-    values = readInput(inputfile)
-    return (day02Part1(values), day02Part2(values))
+function day02(inputdata = readInput("inputs/input02.txt"))
+    return (day02Part1(inputdata), day02Part2(inputdata))
 end
 
 function day02Part1(cmdlist)
