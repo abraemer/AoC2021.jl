@@ -1,4 +1,7 @@
 module Day05
+
+using OffsetArrays
+
 export day05
 
 function parseLine(line)
@@ -10,15 +13,23 @@ function readInput(inputfile="inputs/input05.txt")
     return [parseLine(line) for line in eachline(inputfile)]
 end
 
+
 function day05(ventdata = readInput("inputs/input05.txt"))
-    grid = Dict{Complex{Int64}, Int64}()
+    minx = minimum((a) -> min(real(a[1]), real(a[2])), ventdata)
+    miny = minimum((a) -> min(imag(a[1]), imag(a[2])), ventdata)
+    maxx = maximum((a) -> max(real(a[1]), real(a[2])), ventdata)
+    maxy = maximum((a) -> max(imag(a[1]), imag(a[2])), ventdata)
+
+    ## previous version used a Dict here
+    ## that's ~25x slower
+    grid = OffsetArray(zeros(UInt8, maxx-minx+1, maxy-miny+1), minx:maxx, miny:maxy)
 
     mask = ishorizontal.(ventdata)
     mapvents!(grid, ventdata[mask])
-    part1 = count_crossings(grid)
+    part1 = count(>=(2), grid)
 
     mapvents!(grid, ventdata[.!(mask)])
-    part2 = count_crossings(grid)
+    part2 = count(>=(2), grid)
     return part1, part2
 end
 
@@ -29,7 +40,7 @@ function mapvents!(grid, data)
         δ = intdiv(Δ, dist)
         for l in 0:dist
             pos = start+δ*l
-            grid[start+δ*l] = 1 + get(grid, pos, 0)
+            grid[real(pos), imag(pos)] += 1
         end
     end
     return grid
