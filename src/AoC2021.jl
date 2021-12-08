@@ -8,7 +8,7 @@ using Statistics
 
 export benchmark_all, run_all
 
-DAYS_DONE = [1,2,3,4,5,6,7]
+DAYS_DONE = [1,2,3,4,5,6,7,8]
 
 name(day) = @sprintf("day%02d", day)
 
@@ -16,7 +16,7 @@ for day in DAYS_DONE
     dname = name(day)
     include("$dname.jl")
     @eval using .$(Symbol(uppercasefirst(dname)))
-    @eval export $(Symbol(dname))
+    @eval export $(Symbol(uppercasefirst(dname))), $(Symbol(dname))
 end
 
 function benchmark_all(days = DAYS_DONE; showall=false)
