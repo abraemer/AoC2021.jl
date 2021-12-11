@@ -43,6 +43,7 @@ function _octopus_flash!(grid, loc)
 end
 
 function day11Part1!(grid, steps=100)
+    #return sum(step!(grid) for _ in 1:steps) # less allocs but not really faster
     flashes = [step!(grid) for _ in 1:steps]
     @assert !any(flashes .== length(grid))
     return sum(flashes)
