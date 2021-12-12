@@ -8,7 +8,7 @@ using Statistics
 
 export benchmark_all, run_all
 
-DAYS_DONE = [1,2,3,4,5,6,7,8,9,10,11]
+DAYS_DONE = [1,2,3,4,5,6,7,8,9,10,11,12]
 
 name(day) = @sprintf("day%02d", day)
 
